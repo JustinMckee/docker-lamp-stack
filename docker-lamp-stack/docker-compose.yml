@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: ./php/html
+      dockerfile: Dockerfile
+    container_name: php737
+    volumes:
+      - ./php:/var/www
+    ports:
+      - 8000:80
+  mysql:
+    image: mysql:8.0
+    container_name: mysql8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: my_db
+      MYSQL_ROOT_PASSWORD: rootpassword # TODO: Change this
+      MYSQL_USER: mysqluser
+      MYSQL_PASSWORD: mysqlpassword
+    ports:
+      - 6033:3306
+    volumes:
+      - my-db:/var/lib/mysql
+#     - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+volumes:
+  my-db:
