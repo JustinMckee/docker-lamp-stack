@@ -2,11 +2,11 @@ version: '3.7'
 services:
   web:
     build:
-      context: ./php/html
+      context: ./app/html
       dockerfile: Dockerfile
     container_name: php737
     volumes:
-      - ./php:/var/www
+      - ./app:/var/www
     ports:
       - 8000:80
   mysql:
