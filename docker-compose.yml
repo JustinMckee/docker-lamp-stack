@@ -2,7 +2,7 @@ version: '3.7'
 services:
   web:
     build:
-      context: ./app/html
+      context: ./app
       dockerfile: Dockerfile
     container_name: php737
     volumes:
